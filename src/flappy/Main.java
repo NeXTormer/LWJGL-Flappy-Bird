@@ -66,10 +66,13 @@ public class Main implements Runnable {
 
         GL.createCapabilities();
 
-        glClearColor(1, 1, 1, 1);
+        glClearColor(0, 0, 0, 1);
         glEnable(GL_DEPTH_TEST);
         glActiveTexture(GL_TEXTURE1);
         System.out.println("OpenGL" + glGetString(GL_VERSION));
+
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         Shader.loadAll();
         Shader.BG.enable();
@@ -129,6 +132,9 @@ public class Main implements Runnable {
     private void update() {
         glfwPollEvents();
         level.update();
+        if(level.isGameOver()) {
+            level = new Level();
+        }
     }
 
     private void render() {

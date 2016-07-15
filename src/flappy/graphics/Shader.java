@@ -19,6 +19,7 @@ public class Shader {
     public static Shader BG;
     public static Shader BIRD;
     public static Shader PIPE;
+    public static Shader FADE;
 
 
     private boolean enabled = false;
@@ -35,6 +36,7 @@ public class Shader {
         BG = new Shader("src/flappy/shader/bg.vert", "src/flappy/shader/bg.frag");
         BIRD = new Shader("src/flappy/shader/bird.vert", "src/flappy/shader/bird.frag");
         PIPE = new Shader("src/flappy/shader/pipe.vert", "src/flappy/shader/pipe.frag");
+        FADE = new Shader("src/flappy/shader/fade.vert", "src/flappy/shader/fade.frag");
     }
 
     public int getUniform(String name) {

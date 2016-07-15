@@ -56,7 +56,7 @@ public class Pipe {
     }
 
     public float getY(){
-        return position.z;
+        return position.y;
     }
 
     public float getZ(){
