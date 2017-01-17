@@ -13,11 +13,11 @@ uniform sampler2D tex;
 uniform int top;
 
 void main() {
-
+    vec2 texCoords = fs_in.tc;
     if(top == 1) {
-        fs_in.tc.y = 1.0 - fs_in.tc.y;
+        texCoords = 1.0 - texCoords;
 
-        color = texture(tex, fs_in.tc);
+        color = texture(tex, texCoords);
         //color = mix(color, vec4(0.5, 1, 0.5, 1), 0.7);
 
     } else {
