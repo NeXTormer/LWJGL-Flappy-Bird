@@ -141,6 +141,10 @@ public class Level {
                 }
             }
         }
+        if((bird.getY() < -5) || (bird.getY() > 5 ))
+        {
+            return true;
+        }
         return false;
     }
 

@@ -5,28 +5,16 @@ import flappy.graphics.Shader;
 import flappy.input.Input;
 import flappy.level.Level;
 import flappy.math.Matrix4f;
-import org.lwjgl.*;
 import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.opengl.*;
-import sun.java2d.opengl.OGLContext;
-
-
-import java.awt.*;
-import java.nio.ByteBuffer;
-
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL13.*;
+import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL13.GL_TEXTURE1;
+import static org.lwjgl.opengl.GL13.glActiveTexture;
 
 
 public class Main implements Runnable {
-
-    /*
-        PETER RENDL
-
-        https://youtu.be/527bR2JHSR0?t=2h43m
-     */
 
     private int width = 1280;
     private int height = 720;
@@ -63,7 +51,7 @@ public class Main implements Runnable {
 
         glfwMakeContextCurrent(window);
         glfwShowWindow(window);
-
+        glfwSwapInterval(1);
         GL.createCapabilities();
 
         glClearColor(0, 0, 0, 1);
@@ -118,7 +106,6 @@ public class Main implements Runnable {
                 frames = 0;
             }
             render();
-
 
             if(glfwWindowShouldClose(window)) {
                 running = false;
