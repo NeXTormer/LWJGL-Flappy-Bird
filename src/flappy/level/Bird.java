@@ -21,8 +21,12 @@ public class Bird {
     private Vector3f position = new Vector3f();
     private float rot;
     private float delta = 0.0f;
+    private long lastFlap = 0;
+    private boolean firstFlap = true; //true when the first flap has not been performed
 
     public Bird() {
+        lastFlap = System.currentTimeMillis();
+
         float[] vertices = new float[] {
                 -SIZE / 2.0f, -SIZE / 2.0f, 0.2f,
                 -SIZE / 2.0f,  SIZE / 2.0f, 0.2f,
@@ -47,8 +51,11 @@ public class Bird {
 
     public void update() {
         position.y -= delta;
-        if(Input.isKeyDown(GLFW_KEY_SPACE)) {
-            delta = -0.15f;
+        if((Input.isKeyDown(GLFW_KEY_SPACE) && ((System.currentTimeMillis() - lastFlap > 350) || (firstFlap)))) {
+                lastFlap = System.currentTimeMillis();
+                firstFlap = false;
+                delta = -0.15f;
+
         } else {
             delta += 0.01f;
         }
